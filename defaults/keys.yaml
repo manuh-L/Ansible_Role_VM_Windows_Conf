@@ -1,5 +1,5 @@
 ---
 # keys for VM_Windows
-vcenter_password: "M0z4banc0!"
-admin_password: Madrid2010
-guest_vm_password: M0z4banc0
+vcenter_password:
+admin_password:
+guest_vm_password:
