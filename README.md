@@ -20,18 +20,16 @@ Role Variables
 --------------
 
 defaults/Keys.yaml: Contains the passwords of vCenter, Windows domain admin user, and the new password for local administrator.This file can be encrypted to ensure security, you can use ansible vault to do this.
+
 defaults/main.yml: Contains variables for the guest VM
+
 A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
 
-Dependencies
-------------
-
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
 
 Example Playbook
 ----------------
 
-To provision de VM, you can create a deploy.yml file and execute de playbook
+To provision de VM, you can create a deploy.yml file and execute the playbook
 ```
 - name: Create VM from a template
   hosts: localhost
@@ -54,4 +52,4 @@ BSD
 Author Information
 ------------------
 
-Manuel Nhiuana | email: manuel.nhiuana@gmail.com | website: VirtualClusterIT.net
+Manuel Nhiuana | email: manuel.nhiuana@gmail.com | website: www.VirtualClusterIT.net
