@@ -28,7 +28,7 @@ defaults/main.yml: Contains variables for the guest VM, vCenter Connection, WinR
 Example Playbook
 ----------------
 
-To provision de VM, you can create a deploy.yml file and execute the playbook
+To provision de VM, you can create a deploy.yml file and run the playbook
 ```
 - name: Create VM from a template
   hosts: localhost
