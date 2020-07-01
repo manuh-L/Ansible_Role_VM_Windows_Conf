@@ -1,7 +1,7 @@
 galaxy_info:
   author: Manuel Nhiuana
-  description: your role description
-  company: your company (optional)
+  description: This role provision a windows vm from template, joins to a domain and configure the vm.
+  
 
   # If the issue tracker for your role is not on github, uncomment the
   # next line and provide a value
