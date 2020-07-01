@@ -29,7 +29,6 @@ domain_admin: su@example.com
 gateway: 10.90.10.30
 subnet: 255.255.255.0
 
-
 # Windows connection
 ansible_user: win@example.com
 ansible_password: Windows16 
@@ -49,4 +48,3 @@ drive_letter1: C
 filesystem_type: NTFS
 disk_label: Logs
 drive_letter2: D
-
