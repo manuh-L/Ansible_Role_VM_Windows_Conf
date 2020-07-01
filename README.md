@@ -46,7 +46,7 @@ $ ansible-playbook -i inventory deploy.yml
 License
 -------
 
-BSD
+MIT
 
 Author Information
 ------------------
