@@ -33,12 +33,12 @@ To provision de VM, you can create a deploy.yml file and run the playbook
 - name: Create VM from a template
   hosts: localhost
   roles:
-  - VM_Windows
+  - ansible-vmware_win_conf
 
 - hosts: new_vm
   tasks:
   - import_role:
-      name: VM_Windows
+      name: ansible-vmware_win_conf
       tasks_from: win_conf
 ```
 $ ansible-playbook -i inventory deploy.yml
