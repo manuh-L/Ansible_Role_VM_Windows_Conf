@@ -1,6 +1,5 @@
 ---
 # tasks file for windows configuration
-
    -  name: Add user to "{{ group_name }}" group
       win_group_membership:
         name: "{{ group_name }}"
