@@ -32,19 +32,18 @@ Example Playbook
 ----------------
 
 To provision de VM, you can create a deploy.yml file and execute de playbook
-
+```
 - name: Create VM from a template
   hosts: localhost
   roles:
   - VM_Windows
 
-# configure the Windows VM
 - hosts: new_vm
   tasks:
   - import_role:
       name: VM_Windows
       tasks_from: win_conf
-
+```
 $ ansible-playbook -i inventory deploy.yml
 
 License
