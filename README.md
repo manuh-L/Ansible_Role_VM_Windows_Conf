@@ -14,7 +14,7 @@ This role builds a windows vm from template:
 Requirements
 ------------
 - pyVmomi module
-
+- Windows VM template with PowerShell version >=3.0 and .NET Framework 4.0
 
 Role Variables
 --------------
