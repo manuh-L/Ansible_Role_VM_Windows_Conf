@@ -19,12 +19,12 @@
       vars:
         minimum: "{{ '1 GB' | human_to_bytes }}"
         first_volume: "{{ ansible_disks[0].partitions[0].volumes[0] }}"
-        size_remaining: "{{ first_volume.size_remaining }}"      
-      
+        size_remaining: "{{ first_volume.size_remaining }}"
+        
    -  name: Initializing disk...
       win_shell: "Initialize-Disk -number 1"
       when: ansible_disks[1].partition_style == 'RAW'
-
+      
    -  name: Create partition
       win_partition:
         drive_letter: "{{ drive_letter2 }}"
