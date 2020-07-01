@@ -2,9 +2,9 @@ Role Name
 =========
 
 This role builds a windows vm from template:
-- Configures hostname a network
+- Configures hostname and network
 - Join the VM to a Domain;
-- Configures/enable Winrm for Ansible
+- enables WinRM for Ansible
 - Adds a specified user/group to local group of the Machine
 - Extends the C:\ drive if more space is available
 - Initialize disk 1
@@ -21,9 +21,8 @@ Role Variables
 
 defaults/Keys.yaml: Contains the passwords of vCenter, Windows domain admin user, and the new password for local administrator.This file can be encrypted to ensure security, you can use ansible vault to do this.
 
-defaults/main.yml: Contains variables for the guest VM
+defaults/main.yml: Contains variables for the guest VM, vCenter Connection, WinRM connection
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
 
 
 Example Playbook
