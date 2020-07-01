@@ -1,6 +1,6 @@
 galaxy_info:
   author: Manuel Nhiuana
-  description: This role provision a windows vm from template, joins to a domain and configure the vm.
+  description: This role provision windows vm from template on VMware vCenter, joins to a domain and configure the vm..
   
 
   # If the issue tracker for your role is not on github, uncomment the
