@@ -1,0 +1,15 @@
+---
+    - name: Enabling Winrm on "{{ hostname }}"
+      vmware_vm_shell:
+        hostname: "{{ vcenter_ip }}"
+        username: "{{ vcenter_username }}"
+        password: "{{ keys.vcenter_password }}"
+        validate_certs: False
+        vm_id: "{{ hostname }}"
+        vm_id_type: vm_name
+        vm_password: "{{ keys.guest_vm_password }}"
+        vm_username: administrator
+        vm_shell: "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"
+        vm_shell_args: "-File C:\\ConfigureRemotingForAnsible.ps1"
+        wait_for_process: True
+      changed_when: false

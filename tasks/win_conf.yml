@@ -1,0 +1,41 @@
+---
+# tasks file for windows configuration
+
+   -  name: Add user to "{{ group_name }}" group
+      win_group_membership:
+        name: "{{ group_name }}"
+        members:
+          - "{{ windows_user }}"
+        state: present
+
+   -  name: Get disks facts
+      win_disk_facts:
+      no_log: True
+
+   -  name: Extend "{{ drive_letter1 }}" partition if space available
+      win_partition:
+        drive_letter: "{{ drive_letter1 }}"
+        partition_size: -1
+      when: size_remaining >= minimum
+      vars:
+        minimum: "{{ '1 GB' | human_to_bytes }}"
+        first_volume: "{{ ansible_disks[0].partitions[0].volumes[0] }}"
+        size_remaining: "{{ first_volume.size_remaining }}"      
+      
+   -  name: Initializing disk...
+      win_shell: "Initialize-Disk -number 1"
+      when: ansible_disks[1].partition_style == 'RAW'
+
+   -  name: Create partition
+      win_partition:
+        drive_letter: "{{ drive_letter2 }}"
+        partition_size: -1
+        disk_number: 1
+      when: ansible_disks[1].partitions[1].volumes is undefined
+
+   -  name: Formating "{{ drive_letter2 }}"
+      win_format:
+        drive_letter: "{{ drive_letter2 }}"
+        file_system: "{{ filesystem_type }}"
+        new_label: "{{ disk_label }}"
+      when: ansible_disks[1].partition_style == 'RAW'

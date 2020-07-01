@@ -1,0 +1,15 @@
+---
+- name: copy powershell script to vm
+  vmware_guest_file_operation:
+    hostname: "{{ vcenter_ip }}"
+    username: "{{ vcenter_username }}"
+    password: "{{ keys.vcenter_password }}"
+    validate_certs: False
+    vm_id: "{{ hostname }}"
+    vm_id_type: vm_name
+    vm_password: "{{ keys.guest_vm_password }}"
+    vm_username: administrator
+    copy:
+        src: "/opt/Novo_Play/roles/VM_Windows/files/ConfigureRemotingForAnsible.ps1"
+        dest: "C:\\ConfigureRemotingForAnsible.ps1"
+        overwrite: False

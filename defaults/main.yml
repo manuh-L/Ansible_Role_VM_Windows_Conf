@@ -1,0 +1,52 @@
+---
+# defaults file for VM_Windows
+#vCenter
+vcenter_ip: "10.111.129.200"
+vcenter_username: "administrator@vsphere.local"
+datacenter_name: "Moza Banco"
+cluster_name: "Disaster Recovery Site"
+source_template: "Win2k16_pvscsi_winrm"
+vm_folder: "/Teste/vm"
+
+#VM Resources
+ram_memory: 2048
+cpu: 2
+cores: 2
+scsi_controller: paravirtual
+datastore: "Pool3-DataStore07-VNXR5"
+network_label: "VLAN 850 - Servers Dev"
+network_adapter: vmxnet3
+disk1_size: 60
+disk2_size: 10
+disk_type: thin
+
+#guest
+hostname: TESTEVM
+ip_hostname: 10.111.133.10
+guest_domain: mozabanco.co.mz
+dns_servers: "10.111.1.97"
+domain_admin: sum001164@mozabanco.co.mz
+gateway: 10.111.133.30
+subnet: 255.255.255.224
+
+
+# Windows connection
+ansible_user: sum001164@MOZABANCO.CO.MZ
+ansible_password: Madrid2010
+ansible_connection: winrm
+ansible_port: 5986
+ansible_winrm_server_cert_validation: ignore
+ansible_winrm_transport: ntlm #kerberos
+
+#Remote Access do guest vm
+group_name: Remote Desktop Users
+windows_user: mozabanco\sum001164
+
+#drive c
+drive_letter1: C
+
+#drive D
+filesystem_type: NTFS
+disk_label: Logs
+drive_letter2: D
+

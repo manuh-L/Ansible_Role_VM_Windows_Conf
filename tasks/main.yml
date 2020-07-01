@@ -1,0 +1,65 @@
+---
+# tasks file for VM_Windows
+    - name: Load keys file
+      include_vars:
+        file: defaults/keys.yaml
+        name: keys 
+    - name: Creating VM "{{ hostname }}"
+      vmware_guest:
+        hostname: "{{ vcenter_ip }}"
+        username: "{{ vcenter_username }}"
+        password: "{{ keys.vcenter_password }}"
+        validate_certs: False
+        name: "{{ hostname }}"
+        template: "{{ source_template }}"
+        datacenter: "{{ datacenter_name }}"
+        folder: "{{ vm_folder }}"
+        cluster: "{{ cluster_name }}"
+        disk:
+          - size_gb: "{{ disk1_size }}"
+            type: "{{ disk_type }}"
+            datastore: "{{ datastore }}"
+          - size_gb: "{{ disk2_size }}"
+            type: "{{ disk_type }}"
+            datastore: "{{ datastore }}"
+        hardware:
+          memory_mb: "{{ ram_memory }}"
+          num_cpus: "{{ cpu }}"
+          num_cpu_cores_per_socket: "{{ cores }}"
+        networks:
+          - name: "{{ network_label }}"
+            ip: "{{ ip_hostname }}"
+            netmask: "{{ subnet }}"
+            gateway: "{{ gateway }}"
+            type: static
+            domain: "{{ guest_domain }}"
+            dns_servers: "{{ dns_servers }}"
+        customization:
+          hostname: "{{ hostname }}"
+          dns_servers: "{{ dns_servers }}"
+          domain: "{{ guest_domain }}"
+          password: "{{ keys.guest_vm_password }}"
+          joindomain: "{{ guest_domain }}"
+          domainadmin: "{{ domain_admin }}"
+          domainadminpassword: "{{ keys.admin_password }}"
+        wait_for_customization: yes
+        wait_for_ip_address: yes
+        state: poweredon
+
+    - name: Waiting for VMware tools to become available
+      vmware_guest_tools_wait:
+        hostname: "{{ vcenter_ip }}"
+        username: "{{ vcenter_username }}"
+        password: "{{ keys.vcenter_password }}"
+        validate_certs: no
+        name: "{{ hostname }}"
+
+    - name: Waiting for WinRM.........
+      wait_for:
+        timeout: 25
+    
+    - name: Include task copy_file
+      include_tasks: copy_file.yml
+
+    - name: Include task enable_winrm
+      include_tasks: enable_winrm.yml
