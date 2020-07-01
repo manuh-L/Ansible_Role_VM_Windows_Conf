@@ -1,4 +1,4 @@
-Role Name
+ansible-vmware_win_conf
 =========
 
 This role builds a windows vm from template:
