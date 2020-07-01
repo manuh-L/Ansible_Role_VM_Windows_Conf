@@ -1,5 +1,5 @@
 ---
 # keys for VM_Windows
-vcenter_password:
-admin_password:
-guest_vm_password:
+vcenter_password: VMware1!
+admin_password: Ans1ble
+guest_vm_password: Ans1ble

@@ -1,11 +1,11 @@
 ---
 # defaults file for VM_Windows
 #vCenter
-vcenter_ip: 
-vcenter_username: 
-datacenter_name: 
-cluster_name: 
-source_template: "Win2k16_pvscsi_winrm"
+vcenter_ip: 10.10.10.1
+vcenter_username: admin@example.com
+datacenter_name: Site1
+cluster_name: Dev
+source_template: "Win2k16"
 vm_folder: "/Teste/vm"
 
 #VM Resources
@@ -22,17 +22,17 @@ disk_type: thin
 
 #guest
 hostname: TESTEVM
-ip_hostname: 
-guest_domain: 
-dns_servers: 
-domain_admin: 
-gateway: 10.10.1.30
+ip_hostname: 10.90.10.100
+guest_domain:  example.com
+dns_servers: 10.10.10.200
+domain_admin: su@example.com
+gateway: 10.90.10.30
 subnet: 255.255.255.0
 
 
 # Windows connection
-ansible_user: 
-ansible_password: 
+ansible_user: win@example.com
+ansible_password: Windows16 
 ansible_connection: winrm
 ansible_port: 5986
 ansible_winrm_server_cert_validation: ignore
