@@ -1,5 +1,5 @@
 ---
-# defaults file for VM_Windows
+# defaults file for ansible-vmware_win_conf
 #vCenter
 vcenter_ip: 10.10.10.1
 vcenter_username: admin@example.com
@@ -13,7 +13,7 @@ ram_memory: 2048
 cpu: 2
 cores: 2
 scsi_controller: paravirtual
-datastore: 
+datastore: "DS-01"
 network_label: "Dev"
 network_adapter: vmxnet3
 disk1_size: 60
@@ -21,7 +21,7 @@ disk2_size: 10
 disk_type: thin
 
 #guest
-hostname: TESTEVM
+hostname: Demo
 ip_hostname: 10.90.10.100
 guest_domain:  example.com
 dns_servers: 10.10.10.200
@@ -40,7 +40,7 @@ ansible_winrm_transport: ntlm #kerberos
 
 #Remote Access do guest vm
 group_name: Remote Desktop Users
-windows_user: 
+windows_user: example\Dev01
 
 #drive c
 drive_letter1: C
